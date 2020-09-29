@@ -1,0 +1,36 @@
+package main;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class ConsoleHelper {
+    private static BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+    public static void writeMessage(String message) {
+        System.out.println(message);
+    }
+
+    public static String readString() {
+        while (true){
+            try {
+                String string = bufferedReader.readLine();
+                return string;
+            } catch (IOException e) {
+                writeMessage("Произошла ошибка при попытке ввода текста. Попробуйте ещё раз.");
+            }
+        }
+    }
+
+    public static int readInt(){
+        while(true){
+            try {
+                String input = readString();
+                return Integer.parseInt(input);
+            }catch (NumberFormatException e){
+                writeMessage("Произошла ошибка при попытке ввода числа. Попробуйте ещё раз.");
+            }
+        }
+
+    }
+}
